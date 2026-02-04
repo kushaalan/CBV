@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .company-logo {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+    </style> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <body>
+    <div class="container">
+        <div class="jumbotron">
+            <br>
+            <h1>List of Companies</h1>
+            <div class="row">
+                {% for i in company_list %}
+                    <div class="col col-md-4">
+                        <div class="card card-body">
+                                {% if i.logo %}
+                                <div class="col-12 mb-3 text-center">
+                                    <img src="{{ i.logo.url }}" alt="{{ i.name }}" class="company-logo">
+                                </div>
+                                {% endif %}
+                            <h4><a href="{{ i.id }}">{{ i.name }}</a></h4>
+                        </div>
+                    </div>
+                {% endfor %}
+                    
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+                

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .product-logo {
+        width: 350px;
+        height: 350px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+    } 
+    </style>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+      
+</head>
+
+<body class="container mt-4">
+
+    <h1>{{ company_details.name }} Company Details</h1>
+    <p>CEO: {{ company_details.ceo }}</p>
+    <p>EST_YEAR: {{ company_details.est_year }}</p>
+    <p>Origin: {{ company_details.origin }}</p>
+
+    <hr>
+
+    <h1 class="mb-4">List of {{ company_details.name }} Products</h1>
+
+    <div class="row">
+        {% for prod in company_details.companies.all %}
+        <div class="col-md-4 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    {% if prod.prod_img %}
+                        <div class="col-12 mb-3 text-center">
+                            <img src="{{ prod.prod_img.url }}" alt="{{ prod.prod_name }}" class="product-logo">
+                        </div>
+                    {% endif %}
+                    <h4>{{  prod.prod_name }}</h4>
+                    <h6>Color: {{ prod.color }}</h6>
+                    <h6>Price: {{ prod.price }}</h6>
+                    <h6>Fuel Type: {{ prod.fuel_type }}</h6>
+                    <h6>CC: {{ prod.cc }}</h6>
+                    <h6>Mileage: {{ prod.mileage }}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
