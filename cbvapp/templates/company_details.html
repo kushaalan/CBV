@@ -8,7 +8,7 @@
     <p>EST_YEAR: {{ company_details.est_year }}</p>
     <p>Origin: {{ company_details.origin }}</p>
     <a href="{% url 'edit' pk=company_details.id %}" class="btn btn-warning">Edit</a>
-    <a href="#" class="btn btn-danger">Delete</a>
+    <a href="{% url 'delete' pk=company_details.id %}" class="btn btn-danger">Delete</a>
     
 
 
@@ -33,6 +33,7 @@
                     <h6>Fuel Type: {{ prod.fuel_type }}</h6>
                     <h6>CC: {{ prod.cc }}</h6>
                     <h6>Mileage: {{ prod.mileage }}</h6>
+                    <a href="{% url 'emi' id=prod.id %}" ><i class="bi bi-info-circle"></i></a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Emi Calculator</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-group">
+                {{ form.prod_name.label_tag }} {{ form.prod_name }}
+            </div><br>
+            <div class="form-group">
+                {{ form.price.label_tag }} {{ form.price }}
+            </div><br>
+            <div class="form-group">
+                {{ form.loan_amount.label_tag }} {{ form.loan_amount }}
+                {% for err in form.loan_amount.errors %}<div class="text-danger">{{ err }}</div>{% endfor %}
+            </div><br>
+            <div class="form-group">
+                {{ form.tenures.label_tag }}
+                {{ form.tenures }}
+                {% for err in form.tenures.errors %}<div class="text-danger">{{ err }}</div>{% endfor %}
+            </div><br>
+            <div class="form-group">
+                {{ form.annual_rate.label_tag }} {{ form.annual_rate }}
+            </div>
+            <input type="submit" class="btn btn-primary" value="Calculate EMI">
+        </form>
+
+        {% if results %}
+            <hr>
+            <h3>EMI Results</h3>
+            <ul>
+                {% for r in results %}
+                    <li>{{ r.years }} year(s) ({{ r.months }} months): EMI = {{ r.emi }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}
