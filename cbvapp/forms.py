@@ -28,7 +28,7 @@ class EMIForm(forms.Form):
     )
 
     annual_rate = forms.DecimalField(
-        initial=8.0, min_value=0, label="Annual Interest Rate (%)"
+        initial=12.0, min_value=0, label="Annual Interest Rate (%)"
     )
 
     def clean(self):
