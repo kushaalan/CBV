@@ -24,3 +24,11 @@ class product(models.Model):
     mileage = models.IntegerField()
     prod_img = models.ImageField(upload_to="prodimg/",blank=True,null=True)
     company = models.ForeignKey(company, related_name="companies",on_delete=models.CASCADE)
+
+class InteriorImages(models.Model):
+    image = models.ImageField(upload_to="interiorimg/", blank=True, null=True)
+    product = models.ForeignKey(product, related_name="interior_images", on_delete=models.CASCADE)
+
+class ExteriorImages(models.Model):
+    image = models.ImageField(upload_to="exteriorimg/", blank=True, null=True)
+    product = models.ForeignKey(product, related_name="exterior_images", on_delete=models.CASCADE)

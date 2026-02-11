@@ -9,7 +9,7 @@
     <p>Origin: {{ company_details.origin }}</p>
     <a href="{% url 'edit' pk=company_details.id %}" class="btn btn-warning">Edit</a>
     <a href="{% url 'delete' pk=company_details.id %}" class="btn btn-danger">Delete</a>
-    
+
 
 
 
@@ -23,17 +23,18 @@
             <div class="card text-center h-100">
                 <div class="card-body">
                     {% if prod.prod_img %}
-                        <div class="col-12 mb-3 text-center">
-                            <img src="{{ prod.prod_img.url }}" alt="{{ prod.prod_name }}" class="product-logo">
-                        </div>
+                    <div class="col-12 mb-3 text-center">
+                        <img src="{{ prod.prod_img.url }}" alt="{{ prod.prod_name }}" class="product-logo">
+                    </div>
                     {% endif %}
-                    <h4>{{  prod.prod_name }}</h4>
+                    <h6><a href="{% url 'products_detail' pk=prod.id %}">{{ prod.prod_name }}</a></h6>
                     <h6>Color: {{ prod.color }}</h6>
                     <h6>Price: {{ prod.price }}</h6>
                     <h6>Fuel Type: {{ prod.fuel_type }}</h6>
                     <h6>CC: {{ prod.cc }}</h6>
                     <h6>Mileage: {{ prod.mileage }}</h6>
-                    <a href="{% url 'emi' id=prod.id %}" ><i class="bi bi-info-circle"></i></a>
+                    View Details</a></h6>
+                    <a href="{% url 'emi' id=prod.id %}"><i class="bi bi-info-circle"></i></a>
                 </div>
             </div>
         </div>

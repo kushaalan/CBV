@@ -3,6 +3,8 @@ from django.urls import reverse_lazy
 from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView 
 from django.http import HttpResponse
 from cbvapp.models import company
+from cbvapp.forms import EMIForm
+from cbvapp.models import product
 
 # Create your views here.
 # class Myclass(View):
@@ -22,6 +24,12 @@ class CompanyDetails(DetailView):
     context_object_name = "company_details"
     template_name = "company_details.html"
 
+
+class ProductDetails(DetailView):
+    model = product
+    context_object_name = "products_detail"
+    template_name = "products_detail.html"
+
 class AddNewCompany(CreateView):
     model = company
     fields = "__all__"
@@ -38,8 +46,7 @@ class DeleteCompany(DeleteView):
     # success_url = "/company"
     success_url = reverse_lazy("list")
 
-from cbvapp.forms import EMIForm
-from cbvapp.models import product
+
 
 
 def EmiCalculatorView(request,id=0):
@@ -67,3 +74,5 @@ def EmiCalculatorView(request,id=0):
         form = EMIForm(initial=initial)
 
     return render(request, "emi_calculator.html", {"form": form, "product": prod, "results": results})
+
+
